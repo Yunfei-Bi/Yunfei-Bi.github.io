@@ -1,0 +1,566 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Shell常用命令~万字长文 | Yunfei-Bi's BLOG</title><meta name="author" content="Yunfei-Bi"><meta name="copyright" content="Yunfei-Bi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="简单命令示例ls  列出目录的内容 1ls &#x2F;home  cd  切换目录 1cd &#x2F;home&#x2F;user&#x2F;Documents  pwd  打印当前工作目录 1pwd  cat  查看文件内容 1cat &#x2F;etc&#x2F;passwd  more  分页查看文件内容 1more &#x2F;var&#x2F;log&#x2F;syslog  less  反向分页查看文件内容 1less &#x2F;var&#x2F;log&#x2F;syslog  touch  创">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell常用命令~万字长文">
+<meta property="og:url" content="https://yunfei-bi.github.io/2025/03/26/shell%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Yunfei-Bi&#39;s BLOG">
+<meta property="og:description" content="简单命令示例ls  列出目录的内容 1ls &#x2F;home  cd  切换目录 1cd &#x2F;home&#x2F;user&#x2F;Documents  pwd  打印当前工作目录 1pwd  cat  查看文件内容 1cat &#x2F;etc&#x2F;passwd  more  分页查看文件内容 1more &#x2F;var&#x2F;log&#x2F;syslog  less  反向分页查看文件内容 1less &#x2F;var&#x2F;log&#x2F;syslog  touch  创">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yunfei-bi.github.io/images/avatar.png">
+<meta property="article:published_time" content="2025-03-26T12:17:00.000Z">
+<meta property="article:modified_time" content="2025-03-26T12:17:29.834Z">
+<meta property="article:author" content="Yunfei-Bi">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yunfei-bi.github.io/images/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yunfei-bi.github.io/2025/03/26/shell%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":730,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Yunfei-Bi","link":"链接: ","source":"来源: Yunfei-Bi's BLOG","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Shell常用命令~万字长文',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-26 20:17:29'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于博主</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/Sydney_Opera_House.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Yunfei-Bi's BLOG"><span class="site-name">Yunfei-Bi's BLOG</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于博主</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Shell常用命令~万字长文</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-26T12:17:00.000Z" title="发表于 2025-03-26 20:17:00">2025-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-26T12:17:29.834Z" title="更新于 2025-03-26 20:17:29">2025-03-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Shell常用命令~万字长文"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="简单命令示例"><a href="#简单命令示例" class="headerlink" title="简单命令示例"></a>简单命令示例</h3><p>ls  列出目录的内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /home</span><br></pre></td></tr></table></figure>
+
+<p>cd  切换目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /home/user/Documents</span><br></pre></td></tr></table></figure>
+
+<p>pwd  打印当前工作目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+
+<p>cat  查看文件内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>more  分页查看文件内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+<p>less  反向分页查看文件内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+<p>touch  创建一个空文件或更改文件的访问和修改时间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch /home</span><br></pre></td></tr></table></figure>
+
+<p>cp  复制文件或目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /home/user/file.txt /home/user/Documents</span><br></pre></td></tr></table></figure>
+
+<p>mv  移动或重命名文件或目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /home/user/file.txt /home/user/Documents/newfile.txt</span><br></pre></td></tr></table></figure>
+
+<p>rm   删除文件或目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm /home/user/unwantedfile.txt</span><br></pre></td></tr></table></figure>
+
+<p>find  在文件系统中搜索文件或目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &quot;*.log&quot;</span><br></pre></td></tr></table></figure>
+
+<p>grep  在文件中搜索具有特定模式的行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;error&quot; /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+<p>head  输出文件的开始部分</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n 10 /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+<p>tail  输出文件的尾部</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 20 /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+<p>sort  对我呢本文件的行进行排序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sort /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>wc  计算字数、行数和字节数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+<p>cut  从文件的每一行中剪切字节、字符和字段</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cut -d: f1 /etc/passwd</span><br></pre></td></tr></table></figure>
+
+<p>在<code>/etc/passwd</code>文件中，每一行记录的格式通常如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username:passwd:UID:GID:GECOS:directory:shell</span><br></pre></td></tr></table></figure>
+
+<p>比如某一行内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root:x:0:0:root:/root:/bin/bash</span><br></pre></td></tr></table></figure>
+
+<p>当执行<code>cut -d: 0f1 /etc/passwd</code>命令时，它会从<code>/etc/passwd</code>文件的每一行中提取出第一个字段（也就是用户名），完整执行改命令后可能会得到类似下面的输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line">daemon</span><br><span class="line">bin</span><br><span class="line">sys</span><br><span class="line">sync</span><br></pre></td></tr></table></figure>
+
+<p>nano, vi, emacs 常用的文本编辑器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nano /home/user/file.txt</span><br><span class="line">vi /home/user/file.txt</span><br><span class="line">emacs /home/user/file.txt</span><br></pre></td></tr></table></figure>
+
+<p>paste  合并文件的行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">paste file1.txt file2.txt</span><br></pre></td></tr></table></figure>
+
+<p>假定<code>file1.txt</code>的内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apple</span><br><span class="line">banana</span><br><span class="line">cherry</span><br></pre></td></tr></table></figure>
+
+<p><code>file2.txt</code>的内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">red</span><br><span class="line">yellow</span><br><span class="line">red</span><br></pre></td></tr></table></figure>
+
+<p>执行<code>paste file1.txt file2.txt</code>后，输出会是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apple red</span><br><span class="line">banana yellow</span><br><span class="line">cherry red</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="搜索命令"><a href="#搜索命令" class="headerlink" title="搜索命令"></a>搜索命令</h3><p>以下命令可以帮助你搜索文件或文本：</p>
+<p>find  在文件系统中搜索文件或目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &quot;*.log&quot;</span><br></pre></td></tr></table></figure>
+
+<p>grep  在文本文件中搜索决定的文本模式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;error&quot; /var/log/syslog</span><br></pre></td></tr></table></figure>
+
+<p>locate  基于文件名在数据库中快速找到文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate myfile.txt</span><br></pre></td></tr></table></figure>
+
+<p>which  返回可执行文件的路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which java</span><br></pre></td></tr></table></figure>
+
+<p>ack  特别为程序员设计的一款文件搜索工具。默认会忽略多数版本控制文件夹（如.git, .svn等）的内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ack &quot;your_search_term&quot;</span><br></pre></td></tr></table></figure>
+
+<p>ag（The Silver Searcher）：比ack更快的代码搜索工具，同样默认忽略.git等版本控制文件夹中的内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ag &quot;your_search_term&quot;</span><br></pre></td></tr></table></figure>
+
+<p>whereis  此命令可用于查找二进制程序、源文件、手册页以及其他文件的位置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis ls</span><br></pre></td></tr></table></figure>
+
+<p>type  此命令用于确定某个命令是内部shell命令、可执行文件还是别名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type pwd</span><br></pre></td></tr></table></figure>
+
+<p>apropos  如果你只记得关于某个指令的部分信息，你可以使用的命令描述</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apropos partition</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如搜索 compress 相关的命令</span></span><br><span class="line">apropos compress</span><br></pre></td></tr></table></figure>
+
+<p>alias  如果你经常使用某些<code>linux</code>命令，你可以使用<code>alias</code>命令为这些常用命令创建一个短名，以提升你的工作效率</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias l=&#x27;ls -al&#x27;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="目录操作命令"><a href="#目录操作命令" class="headerlink" title="目录操作命令"></a>目录操作命令</h3><p>mkdir  创建一个新的目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/user/new_directory</span><br></pre></td></tr></table></figure>
+
+<p>rmdir  删除一个空目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir /home/user/empty_directory</span><br></pre></td></tr></table></figure>
+
+<p>tree  以树形结构列出目录内容</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree /home/user/</span><br></pre></td></tr></table></figure>
+
+<p>du  估计文件和目录的磁盘使用空间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh /home/user/Documents</span><br></pre></td></tr></table></figure>
+
+<p>df  显示磁盘使用空间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="权限操作命令"><a href="#权限操作命令" class="headerlink" title="权限操作命令"></a>权限操作命令</h3><p>在<code>linux</code>系统中，文件和目录的访问可以通过权限操作命令进行控制：</p>
+<p>chmod  更改文件或目录的权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">表示设置问价你的主用户有读、写、执行权限（rwx = 7）</span></span><br><span class="line">chmod 777 /home/user/file.txt</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">表示同组的用户和其他用户有读、执行权限(rx = 5)</span></span><br><span class="line">chmod 755 /home/user/file.txt</span><br></pre></td></tr></table></figure>
+
+<p>chown  更改为念或目录的所有者和所属的组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">表示将/home/user/file.txt 的所有者更改为newuser</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">表示将该文件所属的组更改为 newgroup</span></span><br><span class="line">chown newuser:newgroup /home/user/file.txt</span><br></pre></td></tr></table></figure>
+
+<p>chgrp  更改文件或目录的所属组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">表示将 /home/user/file.txt 的所属组更改为 newgroup</span></span><br><span class="line">chgrp newgroup /home/user/file.txt</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="网络操作命令"><a href="#网络操作命令" class="headerlink" title="网络操作命令"></a>网络操作命令</h3><p>以下是在<code>linux</code>系统中与网络相关的一些常用命令：</p>
+<p>ping  发送网络请求以测试网络连接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.google.com</span><br></pre></td></tr></table></figure>
+
+<p>ifconfig  显示或配置网络接口</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig eth0</span><br></pre></td></tr></table></figure>
+
+<p>newstat  显示网络连接、路由表等网络状态信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntlp</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其中</span></span><br><span class="line">-n 以数字形式显示地址和端口号，而不是将ip地址解析为域名，将端口号解析为服务名</span><br><span class="line">   例如，显示`192.168.1.100:80`，而不是`example.com:http`</span><br><span class="line">-t 仅显示TCP协议的连接和监听端口</span><br><span class="line">-l 窒息那是处于监听状态的端口</span><br><span class="line">-p 显示每个连接或监听端口对应的进行ID(PID)和进程名称</span><br></pre></td></tr></table></figure>
+
+<p>当执行<code>netstat -ntlp</code>命令后，可能会得到类似如下的输出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Active Internet connections (only servers)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name</span><br><span class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1234/sshd</span><br><span class="line">tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      5678/named</span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      9012/httpd</span><br></pre></td></tr></table></figure>
+
+<p>ssh  远程登陆或执行远程命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@remote_host</span><br></pre></td></tr></table></figure>
+
+<p>scp  在本地和远程系统之间安全的复制文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp /path/to/file user@remote_host:/remote/path/</span><br></pre></td></tr></table></figure>
+
+<p>curl  获取网络资源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl www.google.com</span><br></pre></td></tr></table></figure>
+
+<p>telnet  远程登陆工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet remote_host 23</span><br></pre></td></tr></table></figure>
+
+<p>nslookup  查询DNS名称服务器的记录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nslookup www.google.com</span><br></pre></td></tr></table></figure>
+
+<p>ftp  在本地主机和FTP服务器之间简历FTP连接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftp ftp_server</span><br></pre></td></tr></table></figure>
+
+<p>wget  获取网络资源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget www.google.com -o google.html</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="进程和系统控制命令"><a href="#进程和系统控制命令" class="headerlink" title="进程和系统控制命令"></a>进程和系统控制命令</h3><p>以下是在<code>linux</code>系统中管理进程和控制系统的一些常用命令：</p>
+<p>ps  显示当前进程的状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux</span><br></pre></td></tr></table></figure>
+
+<p>top  动态显示运行中的进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
+
+<p>kill  发送信号以终止进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill 1234</span><br></pre></td></tr></table></figure>
+
+<p>shutdown  关闭机器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">shutdown -h now</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-h 是`shutdown`命令的一个选项，用于指定关机操作。h表示halt，即停止系统并关闭电源（如果硬件支持）</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">new 表示立即执行关机操作，也可以使用其他时间参数来指定关机的时间。例如：</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">shutdown -h 10 <span class="comment"># 表示10分钟后关机</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">shutdown -h 20:30 表示在当天的20点30分关机</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">需要注意的是，执行`shutdown`命令需要有足够的权限，同长只有root用户或具有相应权限的用户才能执行该命令</span></span><br></pre></td></tr></table></figure>
+
+<p>reboot  重启机器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p>logout  退出登录会话</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logout</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="文本操作命令"><a href="#文本操作命令" class="headerlink" title="文本操作命令"></a>文本操作命令</h3><p>在编写或处理文本文件时，下列命令可以帮助你完成各种复杂任务：</p>
+<p>echo  打印信息到终端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;Hello, world!&quot;</span><br></pre></td></tr></table></figure>
+
+<p>printf  格式化并打印信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf &quot;Name: %s\nAge:%d\n&quot; &quot;Alice&quot; 20</span><br></pre></td></tr></table></figure>
+
+<p>sed  流编辑器，用于对文本文件进行特定的行处理和替换</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;Hello, world!&quot; | sed &#x27;s/world/Shell/g&#x27;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这行代码的预期输出是</span> </span><br><span class="line">`Hello, Shell`</span><br></pre></td></tr></table></figure>
+
+<p>解释</p>
+<ul>
+<li><code>sed</code> 是一个强大的流编辑器，可用于对文本进行替换、删除、插入等操作。</li>
+<li><code>s</code> 是 <code>sed</code> 中的替换命令，表示要进行替换操作。</li>
+<li><code>/World/Shell/</code> 是替换规则，<code>World</code> 是要被替换的旧文本，<code>Shell</code> 是用于替换的新文本。</li>
+<li><code>g</code> 是全局替换标志，意味着会对输入文本中所有匹配到的 <code>World</code> 都进行替换。不过在这个例子中，由于输入文本是 <code>Hello, world!</code>，而规则里是要替换 <code>World</code>（注意大小写），所以实际上不会发生替换。</li>
+</ul>
+<p>awk  在文本文件中进行模式扫描和处理语言</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -e &quot;name\tage\nAlice\t20\nBob\t22&quot; | awk &#x27;&#123;if ($2 &gt;= 21) print $1&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>解释</p>
+<ul>
+<li><p><code>echo -e &quot;name\tage\nAlice\t20\nBob\t22&quot;</code></p>
+<p>：</p>
+<ul>
+<li><code>echo</code> 是用于输出文本的命令。</li>
+<li><code>-e</code> 选项的作用是让 <code>echo</code> 命令识别并处理转义字符，像 <code>\t</code> 代表制表符，<code>\n</code> 代表换行符。</li>
+<li>双引号内的内容是要输出的文本，最终输出的文本格式如下：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name    age</span><br><span class="line">Alice   20</span><br><span class="line">Bob     22</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>|</code>：<ul>
+<li>这是管道符号，其功能是把前一个命令（<code>echo</code>）的输出当作后一个命令（<code>awk</code>）的输入。</li>
+</ul>
+</li>
+<li><code>awk &#39;&#123;if ($2 &gt;= 21) print $1&#125;&#39;</code>：<ul>
+<li><code>awk</code> 是一种功能强大的文本处理工具，常用于对文本进行格式化、筛选和分析。</li>
+<li><code>&#123;&#125;</code> 内的部分是 <code>awk</code> 的脚本，用于对输入的每一行文本进行处理。</li>
+<li><code>if ($2 &gt;= 21)</code> 是一个条件判断语句，<code>$2</code> 代表当前行的第二个字段（以制表符或空格分隔），该语句会判断第二个字段的值是否大于或等于 21。</li>
+<li><code>print $1</code> 表示如果条件满足，就打印当前行的第一个字段。</li>
+</ul>
+</li>
+</ul>
+<p>执行过程：</p>
+<ul>
+<li><p><code>echo</code> 命令输出的文本被传递给 <code>awk</code> 命令。</p>
+</li>
+<li><p><code>awk</code>逐行处理输入文本：</p>
+<ul>
+<li>对于第一行 <code>name age</code>，第二个字段 <code>age</code> 无法进行数值比较，所以不满足条件，不做输出。</li>
+<li>对于第二行 <code>Alice 20</code>，第二个字段的值是 20，小于 21，不满足条件，不做输出。</li>
+<li>对于第三行 <code>Bob 22</code>，第二个字段的值是 22，大于 21，满足条件，会打印第一个字段 <code>Bob</code>。</li>
+</ul>
+</li>
+</ul>
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bob</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="压缩与解压命令"><a href="#压缩与解压命令" class="headerlink" title="压缩与解压命令"></a>压缩与解压命令</h3><p>以下命令主要用于管理和操作文件压缩及解压：</p>
+<p>tar  创建、展开及管理tar包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -cvf archive.tar folder</span><br></pre></td></tr></table></figure>
+
+<p>gzip  用于文件压缩或解压</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gzip file</span><br></pre></td></tr></table></figure>
+
+<p>gunzip  用于解压gzip压缩的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip file.gz</span><br></pre></td></tr></table></figure>
+
+<p>zip&#x2F;unzip  创建和解压zip格式的压缩包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zip -r archive.zip folder</span><br><span class="line">unzip archive.zip</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="磁盘使用管理命令"><a href="#磁盘使用管理命令" class="headerlink" title="磁盘使用管理命令"></a>磁盘使用管理命令</h3><p>管理和查看磁盘使用情况：</p>
+<p>df 报告文件系统磁盘空间使用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+
+<p>du  估计并报告文件及文件夹的磁盘使用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh folder</span><br></pre></td></tr></table></figure>
+
+<p>fdisk  对磁盘进行分区管理</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk -l</span><br></pre></td></tr></table></figure>
+
+<p>hdparm  查看或修改 SATA&#x2F;ATA 磁盘参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hdparm -i /dev/sda</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="包管理命令"><a href="#包管理命令" class="headerlink" title="包管理命令"></a>包管理命令</h3><p>在<code>Debian</code>, <code>Ubuntu</code>及其他基于<code>Debian</code>的系统中，可以使用以下命令进行软件包管理：</p>
+<p>apt-get  APT包处理工具，用于处理包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install package</span><br></pre></td></tr></table></figure>
+
+<p>dpkg  Debian包管理器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i package.deb</span><br></pre></td></tr></table></figure>
+
+<p>在<code>RedHat</code>，<code>CentOS</code>及其他基于RPM的系统中，可以使用以下命令进行软件包管理：</p>
+<p>yum  高级软件包管理器，用于处理rpm包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install package</span><br></pre></td></tr></table></figure>
+
+<p>rpm  RPM包管理器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -i package.rpm</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="进程管理命令"><a href="#进程管理命令" class="headerlink" title="进程管理命令"></a>进程管理命令</h3><p>查看和管理正在运行的进程：</p>
+<p>ps  报告进程当前状态</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ps aux</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND   </span><br><span class="line">root 1 0.0 0.4 225848 7836 ? Ss Nov10 4:05 /lib/systemd/systemd --system --deserialize 39   </span><br><span class="line">root 2 0.0 0.0 0 0 ? S Nov10 0:00 [kthreadd]   </span><br><span class="line">root 4 0.0 0.0 0 0 ? I&lt; Nov10 0:00 [kworker/0:0H] </span><br></pre></td></tr></table></figure>
+
+<p>top  动态显示当前耗费系统资源最多的进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
+
+<p>htop  比top更友好的动态进程查看工具</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">htop</span><br></pre></td></tr></table></figure>
+
+<p>kill  终止或发送一个信号到指定进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill</span><br></pre></td></tr></table></figure>
+
+<p>pkill  条件地终止或者发送一个信号到指定进程</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkill process_name</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="环境变量命令"><a href="#环境变量命令" class="headerlink" title="环境变量命令"></a>环境变量命令</h3><p>查看或设置环境变量：</p>
+<p>env  显示当前所有的环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">env</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span><br><span class="line">SHELL=/bin/bash </span><br><span class="line">PWD=/home/user</span><br></pre></td></tr></table></figure>
+
+<p>set  显示当前shell所有的环境变量及函数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">set</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">展示所有的环境变量以及函数</span><br></pre></td></tr></table></figure>
+
+<p>export  设置或显示环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">export VARName=&quot;Value&quot;</span><br><span class="line">echo $ VARName</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出结果</span></span><br><span class="line">Value</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="系统信息发布相关指令"><a href="#系统信息发布相关指令" class="headerlink" title="系统信息发布相关指令"></a>系统信息发布相关指令</h3><p>有时，你可能想要查看有关你的系统或硬件的信息。以下命令可以帮助你做到这一点：</p>
+<p>uname  会打印操作系统的名称</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">uname</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">Linux</span><br></pre></td></tr></table></figure>
+
+<p>hostname  打印系统的主机名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">hostname</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">myhostname</span><br></pre></td></tr></table></figure>
+
+<p>dmesg  打印或控制内核环形缓冲区</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">dmesg | less</span><br></pre></td></tr></table></figure>
+
+<p>df  展示文件系统的磁盘空间使用情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">df -h</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on  </span><br><span class="line">udev            962M     0  962M   0% /dev  </span><br><span class="line">tmpfs           200M  4.3M  196M   3% /run  </span><br><span class="line">/dev/sda1        30G  4.7G   24G  17% /</span><br></pre></td></tr></table></figure>
+
+<p>free  展示系统中未使用和已使用的物理和swap内存</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">free -h</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">                 total        used        free      shared  buff/cache   available  </span><br><span class="line">    Mem:           3.8G        487M        1.9G        122M        1.4G        3.0G  </span><br><span class="line">    Swap:            0B          0B          0B </span><br></pre></td></tr></table></figure>
+
+<p>uotime  展示系统已经运行了多久，有多少用户正在登录，以及系统负载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">uptime</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">16:14:30 up 43 min,  1 user,  load average: 0.34, 0.36, 0.40  </span><br></pre></td></tr></table></figure>
+
+<p>last  查看系统的重启和关机记录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">last reboot</span><br></pre></td></tr></table></figure>
+
+<p>w  展示哪些用户正在登录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">w</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">16:17:51 up  1:42,  1 user,  load average: 0.45, 0.47, 0.38  </span><br><span class="line">    USER     TTY      FROM              LOGIN@   IDLE   JCPU   PCPU WHAT  </span><br><span class="line">    user     tty1                      14:36    1:42m  1.55s  0.06s w</span><br></pre></td></tr></table></figure>
+
+<p>who  展示哪些用户正在登录，和<code>w</code>命令相似但信息更少</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">who</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">user     tty1         2022-01-28 14:36</span><br></pre></td></tr></table></figure>
+
+<p>id  展示当前用户的<code>UID</code>，<code>GID</code>以及所在的组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">id</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">uid=1000(user) gid=1000(user) groups=1000(user),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),116(lpadmin),126(sambashare)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="系统控制命令"><a href="#系统控制命令" class="headerlink" title="系统控制命令"></a>系统控制命令</h3><p>在一些特殊情况下，你可能需要进行一些系统控制操作。以下命令可以帮助你做到这一点：</p>
+<p>halt  关机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">sudo halt</span><br></pre></td></tr></table></figure>
+
+<p>reboot  重启系统</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<p>shutdown  关机或者重启，和上述两个命令一样，但是提供更多的选项</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo shutdown -h now # 关闭系统</span><br><span class="line">sudo shutdown -r now # 重启系统</span><br></pre></td></tr></table></figure>
+
+<p>passwd  更改用户密码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd # 更改密码</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="文本编辑器命令"><a href="#文本编辑器命令" class="headerlink" title="文本编辑器命令"></a>文本编辑器命令</h3><p><code>Linux</code>提供了多种命令行文本编辑器。以下这些可能是你需要知道的：</p>
+<p>vi&#x2F;vim  vi是一个文本编辑器，而vim是vi的改进版，提供了更多的功能</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim file.txt</span><br></pre></td></tr></table></figure>
+
+<p>nano  一个简单易用的命令行文本编辑器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano file.txt</span><br></pre></td></tr></table></figure>
+
+<p>emacs  一个强大的文本编辑器，也是一个定制化的计算环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emacs file.txt</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="其他常用命令"><a href="#其他常用命令" class="headerlink" title="其他常用命令"></a>其他常用命令</h3><p>man  查看命令的帮助文档</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man ls</span><br></pre></td></tr></table></figure>
+
+<p>whatis  显示一个命令的简单描述</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">whatis ls</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">ls (1)               - list directory contents</span><br></pre></td></tr></table></figure>
+
+<p>whereis  查找命令的二进制文件、源文件及帮助文档</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">whereis ls</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">ls: /bin/ls /usr/share/man/man1/ls.1.gz</span><br></pre></td></tr></table></figure>
+
+<p>which  查找并显示给定命令的完整路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">which ls</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">/bin/ls</span><br></pre></td></tr></table></figure>
+
+<p>whoami  打印当前有效的用户名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">whoami</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">user</span><br></pre></td></tr></table></figure>
+
+<p>date  显示或设置系统日期和时间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">date</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">Tue Feb 23 02:16:12 UTC 2025</span><br></pre></td></tr></table></figure>
+
+<p>cal  显示日历</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">cal</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输出</span></span><br><span class="line">       January 2022        </span><br><span class="line">    Su Mo Tu We Th Fr Sa    </span><br><span class="line">                      1    </span><br><span class="line">    2  3  4  5  6  7  8    </span><br><span class="line">    9 10 11 12 13 14 15    </span><br><span class="line">    16 17 18 19 20 21 22    </span><br><span class="line">    23 24 25 26 27 28 29    </span><br><span class="line">    30 31 </span><br></pre></td></tr></table></figure>
+
+<p>alias  创建命令别名</p>
+<p>unalias  删除别名</p>
+<p>history  显示命令历史</p>
+<p>clear  清除屏幕或窗口内容</p>
+<p>watch  用于实时查看当前命令打印信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入</span></span><br><span class="line">watch -n 2 date</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解释</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">watch`命令会每2秒运行一次`<span class="built_in">date</span>`命令，并实时显示输出</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Yunfei-Bi.github.io">Yunfei-Bi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yunfei-bi.github.io/2025/03/26/shell%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">https://yunfei-bi.github.io/2025/03/26/shell常用命令/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Yunfei-Bi.github.io" target="_blank">Yunfei-Bi's BLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/linux/">linux</a></div><div class="post_share"><div class="social-share" data-image="/images/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/02/26/%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%A4%E5%84%BF%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B%EF%BC%8C%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E4%BB%96%E4%BB%AC/" title="什么是孤儿进程和僵尸进程，如何处理他们?"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">什么是孤儿进程和僵尸进程，如何处理他们?</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4%E7%A4%BA%E4%BE%8B"><span class="toc-text">简单命令示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4"><span class="toc-text">搜索命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">目录操作命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">权限操作命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">网络操作命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%B3%BB%E7%BB%9F%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="toc-text">进程和系统控制命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">文本操作命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">压缩与解压命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E4%BD%BF%E7%94%A8%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">磁盘使用管理命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%85%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">包管理命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-text">进程管理命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%91%BD%E4%BB%A4"><span class="toc-text">环境变量命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BF%A1%E6%81%AF%E5%8F%91%E5%B8%83%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4"><span class="toc-text">系统信息发布相关指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%8E%A7%E5%88%B6%E5%91%BD%E4%BB%A4"><span class="toc-text">系统控制命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">文本编辑器命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">其他常用命令</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Yunfei-Bi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://yunfei-bi.github.io">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
