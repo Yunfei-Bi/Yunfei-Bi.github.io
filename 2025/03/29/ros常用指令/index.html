@@ -1,0 +1,535 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>ROS常用命令~万字长文 | Yunfei-Bi's BLOG</title><meta name="author" content="Yunfei-Bi"><meta name="copyright" content="Yunfei-Bi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、创建工作空间1.1 新建文件夹 新建一个catkin_ws的文件夹并在里面创建src目录 12mkdir -p ~&#x2F;dev&#x2F;catkin_ws&#x2F;srccd ~&#x2F;dev&#x2F;catkin_ws&#x2F;src  1.2 初始化工作空间 在刚刚创建的src子目录中，使用如下命令创建工作空间，但此时工作空间中还没有任何功能包，只有CMakeLists.txt 1catkin_init_workspace  1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROS常用命令~万字长文">
+<meta property="og:url" content="https://yunfei-bi.github.io/2025/03/29/ros%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Yunfei-Bi&#39;s BLOG">
+<meta property="og:description" content="一、创建工作空间1.1 新建文件夹 新建一个catkin_ws的文件夹并在里面创建src目录 12mkdir -p ~&#x2F;dev&#x2F;catkin_ws&#x2F;srccd ~&#x2F;dev&#x2F;catkin_ws&#x2F;src  1.2 初始化工作空间 在刚刚创建的src子目录中，使用如下命令创建工作空间，但此时工作空间中还没有任何功能包，只有CMakeLists.txt 1catkin_init_workspace  1.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yunfei-bi.github.io/images/avatar.png">
+<meta property="article:published_time" content="2025-03-29T13:05:00.000Z">
+<meta property="article:modified_time" content="2025-03-29T13:15:55.327Z">
+<meta property="article:author" content="Yunfei-Bi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yunfei-bi.github.io/images/avatar.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yunfei-bi.github.io/2025/03/29/ros%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":730,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Yunfei-Bi","link":"链接: ","source":"来源: Yunfei-Bi's BLOG","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'ROS常用命令~万字长文',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-29 21:15:55'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于博主</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/Sydney_Opera_House.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Yunfei-Bi's BLOG"><span class="site-name">Yunfei-Bi's BLOG</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于博主</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">ROS常用命令~万字长文</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-29T13:05:00.000Z" title="发表于 2025-03-29 21:05:00">2025-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-29T13:15:55.327Z" title="更新于 2025-03-29 21:15:55">2025-03-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ros/">ros</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="ROS常用命令~万字长文"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="一、创建工作空间"><a href="#一、创建工作空间" class="headerlink" title="一、创建工作空间"></a>一、创建工作空间</h3><p><strong>1.1 新建文件夹</strong></p>
+<p>新建一个<code>catkin_ws</code>的文件夹并在里面创建<code>src</code>目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/dev/catkin_ws/src</span><br><span class="line">cd ~/dev/catkin_ws/src</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.2 初始化工作空间</strong></p>
+<p>在刚刚创建的<code>src</code>子目录中，使用如下命令创建工作空间，但此时工作空间中还没有任何功能包，只有<code>CMakeLists.txt</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">catkin_init_workspace</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.3 编译工作空间</strong></p>
+<p>回到工作空间的顶层目录<code>catkin_ws</code>文件夹中，使用<code>catkin_make</code>命令执行编译。编译完成后使用<code>ll</code>指令可以看到生成了<code>build</code>和<code>devel</code>两个文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+
+<p><strong>1.4 完成配置</strong></p>
+<p>重新加载<code>setup.bash</code>文件，完成工作空间创建的最后一步配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source devel/setup.bash</span><br></pre></td></tr></table></figure>
+
+<p>其实如果你在<code>~/.bashrc</code>中加入了此命令行，就可以通过重启终端得到同样的效果，添加命令如下，其中<code>noetic</code>是我的ros系统的版本号，如果你的版本不同，无比更改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;source /opt/ros/noetic/setup.bash&quot; &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、创建与编译ROS功能包"><a href="#二、创建与编译ROS功能包" class="headerlink" title="二、创建与编译ROS功能包"></a>二、创建与编译ROS功能包</h3><p><strong>2.1 创建功能包</strong></p>
+<p>功能包可以通过手动方式创建，但为了方便，通常会用<code>catkin_create_pkg</code>命令创建功能包，此命令的格式如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">catkin_create_pkg [package_name] [depend1] [depend2] [depend3]</span><br></pre></td></tr></table></figure>
+
+<p>其中的depend依赖项包括</p>
+<ul>
+<li><code>std_msgs</code>：包括常见的消息类型，表示基本数据类型和其他基本的消息构造</li>
+<li><code>roscpp</code>：使用C++编写ROS的各种功能</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如：</span></span><br><span class="line">cd ~/dev/catkin_ws/src</span><br><span class="line">catkin_make_create_pkg test_package std_msgs roscpp</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.2 编译功能包</strong></p>
+<p>回到<code>catkin_ws</code>文件夹下执行编译操作，如果没有报错，则寿命功能包编译成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、ROS的基本命令"><a href="#三、ROS的基本命令" class="headerlink" title="三、ROS的基本命令"></a>三、ROS的基本命令</h3><p><strong>3.1 节点</strong></p>
+<p><strong>3.1.1 rosnode命令</strong></p>
+<p><code>rosnode</code>工具可以打印<code>ROS</code>节点的相关信息，具体命令如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>rosnode指令</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rosnode ping NODE</code></td>
+<td>测试节点的连通性</td>
+</tr>
+<tr>
+<td><code>rosnode list</code></td>
+<td>列出活动节点</td>
+</tr>
+<tr>
+<td><code>rosnode info NODE</code></td>
+<td>输出此节点的信息</td>
+</tr>
+<tr>
+<td><code>rosnode machine</code></td>
+<td>打印运行在特定计算机中的节点</td>
+</tr>
+<tr>
+<td><code>rosnode kill NODE</code></td>
+<td>结束节点进程</td>
+</tr>
+<tr>
+<td><code>rosnode cleanup</code></td>
+<td>将无法访问的节点的注册信息清除</td>
+</tr>
+</tbody></table>
+<p><strong>3.1.2 运行节点</strong></p>
+<p>首先使用<code>roscore</code>指令启动<code>ros</code>程序，然后再打开一个新的终端窗口执行接下来的操作</p>
+<p>我们可以使用<code>rosrun</code>指令运行一个节点</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如：</span></span><br><span class="line">rosrun turtlesim turtlesim_node</span><br></pre></td></tr></table></figure>
+
+<p>节点成功运行后再次使用<code>rosnode list</code>可以看到正在运行的节点，使用<code>rosnode info/turtlesim</code>可以查看此节点的详细信息，包括发布(Publications)、订阅(Subscriptions)以及节点具有的服务(Services)等。</p>
+<p><strong>3.2 主题</strong></p>
+<p><strong>3.2.1 rostopic指令</strong></p>
+<p>节点可以通过发布主题和订阅主题实现数据的传输，通过主题的消息传输不需要节点直接连接，一个主题可以有多个订阅者和多个发布者。要实现主题与节点之间的交互，可以使用<code>rostopic</code>指令</p>
+<table>
+<thead>
+<tr>
+<th><strong>rostopic指令</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rostopic bw TOPIC</code></td>
+<td>显示主题所用的带宽</td>
+</tr>
+<tr>
+<td><code>rostopic echo TOPIC</code></td>
+<td>将主题的消息输出到屏幕</td>
+</tr>
+<tr>
+<td><code>rostopic find TOPIC</code></td>
+<td>查找主题</td>
+</tr>
+<tr>
+<td><code>rostopic hz TOPIC</code></td>
+<td>显示主题发布频率</td>
+</tr>
+<tr>
+<td><code>rostopic info TOPIC</code></td>
+<td>输出主题详细信息</td>
+</tr>
+<tr>
+<td><code>rostopic list TOPIC</code></td>
+<td>列出活动主题</td>
+</tr>
+<tr>
+<td><code>rostopic pubs TOPIC</code></td>
+<td>将数据发布到主题</td>
+</tr>
+<tr>
+<td><code>rostopic type TOPIC</code></td>
+<td>输出主题类型</td>
+</tr>
+</tbody></table>
+<p><strong>3.2.2 发布主题</strong></p>
+<p>可以通过<code>rostopic list</code>列出当前主题。通过<code>echo</code>参数就可以打印节点发出的消息，如：</p>
+<p><code>rostopic echo/turtle1/cmd_vel</code></p>
+<p>此外，我们也可以通过<code>rostopic pub</code>发布主题，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">例如：</span></span><br><span class="line">rostopic pub -r 10 /turtle1/cmd_vel geometry_msgs/Twist &quot;&#123;linear: &#123;x: 1, y: 0, z: 0&#125;, angular: &#123;x: 0, y: 0, z: 1&#125;&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292108764.png" alt="turtle1" style="zoom:50%;" />
+
+<h5 id="3-3-服务"><a href="#3-3-服务" class="headerlink" title="3.3 服务"></a><strong>3.3 服务</strong></h5><p><strong>3.3.1 rosservice指令</strong></p>
+<p>服务是节点之间相互通信的另一种方法，服务允许节点发送请求和接受响应。可以使用<code>rosservice</code>指令操作服务</p>
+<table>
+<thead>
+<tr>
+<th><strong>rosservice指令</strong></th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rosservice args /service</code></td>
+<td>输出服务参数</td>
+</tr>
+<tr>
+<td><code>rosservice args /service</code></td>
+<td>根据命令行参数调用服务</td>
+</tr>
+<tr>
+<td><code>rosservice find msgtype</code></td>
+<td>根据服务类型查询服务</td>
+</tr>
+<tr>
+<td><code>rosservice info /service</code></td>
+<td>输出服务信息</td>
+</tr>
+<tr>
+<td><code>rosservice list</code></td>
+<td>列出活动服务清单</td>
+</tr>
+<tr>
+<td><code>rosservice type /service</code></td>
+<td>输出服务类型</td>
+</tr>
+<tr>
+<td><code>rosservice find msgtype</code></td>
+<td>根据服务类型查询服务</td>
+</tr>
+</tbody></table>
+<p><strong>3.3.2 服务的使用</strong></p>
+<p>使用<code>rosservice list</code>可以列出所有的服务，使用<code>rosservice call [service] [args]</code>可以调用某个服务，例如<code>rosservice call /clear</code>可以清除海龟图上的线条</p>
+<p>此外，使用<code>rossrv show turtlesim/Spawn</code>可以查看<code>/spawn</code>服务的详细参数</p>
+<img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292109766.png" alt="02bda03a9a3528957dfadab2949acbe6" style="zoom: 80%;" />
+
+<p>通过这些参数就可以调用<code>/spawn</code>服务创建第二只海龟</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rosservice call /spawn 3 3 0.5 &quot;new_turtle&quot;</span><br></pre></td></tr></table></figure>
+
+<img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292109089.png" alt="27ef940709f47fd08aa6d69c536f43b1" style="zoom:50%;" />
+
+<p><strong>3.4 参数服务器</strong></p>
+<p><strong>3.4.1 rosparam指令</strong></p>
+<p>参数服务器存储了所有节点都可以访问的共享数据，可以通过<code>rosparam</code>指令管理参数服务器</p>
+<table>
+<thead>
+<tr>
+<th><strong>rosparam指令</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>rosparam set parameter value</code></td>
+<td>设置参数值</td>
+</tr>
+<tr>
+<td><code>rosparam get parameter</code></td>
+<td>获取参数值</td>
+</tr>
+<tr>
+<td><code>rosparam load file</code></td>
+<td>从文件加载参数</td>
+</tr>
+<tr>
+<td><code>rosparam dump file</code></td>
+<td>将参数保存至文件</td>
+</tr>
+<tr>
+<td><code>rosparam delete parameter</code></td>
+<td>删除参数</td>
+</tr>
+<tr>
+<td><code>rosparam list</code></td>
+<td>列出所有参数名</td>
+</tr>
+</tbody></table>
+<p><strong>3.4.2 使用参数服务器</strong></p>
+<p>以小海龟程序为例，通过<code>rosparam list</code>列出参数列表，可以看到背景<code>background</code>是<code>turtlesim</code>节点的参数，因此我们可以通过<code>get</code>指令获取参数值</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rosparam list</span><br><span class="line">rosparam get /turtlesim/background_g</span><br><span class="line">rosparam set /turtlesim/background_g 200</span><br></pre></td></tr></table></figure>
+
+<img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292109328.png" alt="481885ca325fc683ad640caa87ce7a3a" style="zoom:50%;" />
+
+<h3 id="四、节点的创建与运行"><a href="#四、节点的创建与运行" class="headerlink" title="四、节点的创建与运行"></a>四、节点的创建与运行</h3><p>这一部分会议一个具体实验为例，通过创建一个<code>talker</code>和一个<code>listener</code>并实现两者之间的信息交流，进而介绍创建节点的方法</p>
+<p><strong>4.1 创建源文件</strong></p>
+<p>首先进入工作空间<code>~/dev/catkin_ws</code>文件夹中的功能包<code>test_package/src/</code>文件夹中，在这里创建两个<code>cpp</code>文件，分别作为消息的发送方和接收方。在这里我将两个源文件分别命名<code>talker.cpp</code>和<code>listener.cpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//talker.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span>	<span class="comment">//包含ros节点的必要文件</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;std_msgs/String.h&quot;</span>	<span class="comment">//包含要使用的消息类型</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sstream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>&#123;</span><br><span class="line">        ros::<span class="built_in">init</span>(argc, argv, <span class="string">&quot;talker&quot;</span>);	<span class="comment">//初始化节点并设置名称，所有ROS节点必须有这句</span></span><br><span class="line">        ros::NodeHandle n;	<span class="comment">//创建NodeHandle对象，用来与ROS系统通讯</span></span><br><span class="line">    	<span class="comment">//创建一个主题发布者，并设置主题名称为message，缓冲区1000个消息</span></span><br><span class="line">        ros::Publisher chatter_pub = n.<span class="built_in">advertise</span>&lt;std_msgs::String&gt;(<span class="string">&quot;message&quot;</span>, <span class="number">1000</span>);</span><br><span class="line">        <span class="function">ros::Rate <span class="title">loop_rate</span><span class="params">(<span class="number">10</span>)</span></span>;	<span class="comment">//数据发送频率10HZ</span></span><br><span class="line">        <span class="keyword">while</span>(ros::<span class="built_in">ok</span>())&#123;	<span class="comment">//ctrl+c时返回0</span></span><br><span class="line">                std_msgs::String msg;	<span class="comment">//创建一个字符串的消息</span></span><br><span class="line">                std::stringstream ss;	<span class="comment">//定义一个字符串</span></span><br><span class="line">                ss &lt;&lt; <span class="string">&quot;I&#x27;m talker node~~~&quot;</span>;</span><br><span class="line">                msg.data = ss.<span class="built_in">str</span>();		<span class="comment">//将字符串赋值给消息</span></span><br><span class="line">                <span class="built_in">ROS_INFO</span>(<span class="string">&quot;%s&quot;</span>, msg.data.<span class="built_in">c_str</span>());	<span class="comment">//屏幕输出消息信息</span></span><br><span class="line">                chatter_pub.<span class="built_in">publish</span>(msg);	<span class="comment">//发布消息</span></span><br><span class="line">                ros::<span class="built_in">spinOnce</span>();			<span class="comment">//如果有订阅者出现，就会更新所有主题</span></span><br><span class="line">                loop_rate.<span class="built_in">sleep</span>();			<span class="comment">//提供延时，保证10HZ的发布频率</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//listener.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;std_msgs/String.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//回调函数，节点每收到一条消息都会调用此函数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">messageCallback</span><span class="params">(<span class="type">const</span> std_msgs::String::ConstPtr&amp; msg)</span></span>&#123;</span><br><span class="line">        <span class="built_in">ROS_INFO</span>(<span class="string">&quot;I am listener, I heard: [%s]&quot;</span>,msg-&gt;data.<span class="built_in">c_str</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>&#123;</span><br><span class="line">        ros::<span class="built_in">init</span>(argc, argv, <span class="string">&quot;listener&quot;</span>);</span><br><span class="line">        ros::NodeHandle n;</span><br><span class="line">        <span class="comment">//创建一个订阅者，从message主题获取消息，设置缓冲区1000个消息，处理消息的回调函数为messageCallback</span></span><br><span class="line">        ros::Subscriber sub = n.<span class="built_in">subscribe</span>(<span class="string">&quot;message&quot;</span>, <span class="number">1000</span>, messageCallback);</span><br><span class="line">        ros::<span class="built_in">spin</span>();	<span class="comment">//消息回调处理，调用后不再返回</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.2 修改CMakeLists.txt</strong></p>
+<p>编辑<code>catkin_ws/src/test_package/</code>中的<code>CMakeLists.txt</code>，在最后加入如下的内容：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#<span class="built_in">include_directories</span>(</span><br><span class="line">        include</span><br><span class="line">        $&#123;catkin_INCLUDE_DIRS&#125;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"># 指定编译后可执行文件的名称</span><br><span class="line"><span class="built_in">add_executable</span>(talker src/talker.cpp)</span><br><span class="line"><span class="built_in">add_executable</span>(listener src/listener.cpp)</span><br><span class="line"># 定义目标的依赖文件</span><br><span class="line"><span class="built_in">add_dependencies</span>(talker test_package_generate_messages_cpp)</span><br><span class="line"><span class="built_in">add_dependencies</span>(listener test_package_generate_messages_cpp)</span><br><span class="line"></span><br><span class="line"><span class="built_in">target_link_libraries</span>(talker $&#123;catkin_LIBRARIES&#125;)</span><br><span class="line"><span class="built_in">target_link_libraries</span>(listener $&#123;catkin_LIBRARIES&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.3 编译节点</strong></p>
+<p>回到工作空间根目录进行编译</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/dev/catkin_ws</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+
+<p>如果出现<code>The dependency target does not exist.</code>的错误，将<code>CMakeLists.txt</code>开头的<code>cmake</code>版本改为<code>2.8.3</code>即可</p>
+<p>编译完成后需要设置环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;source ~/ros/tr3_6/devel/setup.bash&quot; &gt;&gt; ~/.bashrc</span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.4 运行节点</strong></p>
+<p>然后开始运行节点，首先运行<code>roscore</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roscore</span><br></pre></td></tr></table></figure>
+
+<p>然后再打开两个窗口分别运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rosrun test_package example1_a</span><br><span class="line">rosrun test_package example1_b</span><br></pre></td></tr></table></figure>
+
+<p>可以看到消息的接受和发送</p>
+<img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292109253.png" alt="3adfd897279154acad6153220c057640" style="zoom: 50%;" />
+
+<h3 id="五、服务的创建与使用"><a href="#五、服务的创建与使用" class="headerlink" title="五、服务的创建与使用"></a>五、服务的创建与使用</h3><p>本节将创建两个节点，分别作为服务器和客户端，通过服务的调用实现两个节点的数据传输，并实现数字求和的功能</p>
+<p><strong>5.1 创建msg文件</strong></p>
+<p>使用服务之前秒首先需要创建<code>msg</code>和<code>srv</code>文件，它们用于说明传输的数据类型和数据值</p>
+<p><strong>5.1.1 首先创建msg文件</strong></p>
+<p>在<code>test_package</code>功能包下创建<code>msg</code>文件夹，并在<code>msg</code>文件夹中创建一个新的文件<code>test_msg.msg</code>。在文件中输入以下内容：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int32 num1</span><br><span class="line">int32 num2</span><br><span class="line">int32 num3</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.1.2 编辑package.xml文件</strong></p>
+<p>在<code>package.xml</code>文件中找到下面两行，取消这两行的注释<code>&lt;!-- --&gt;</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &lt;build_depend&gt;message_generation&lt;/build_depend&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt; --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build_depend</span>&gt;</span>message_generation<span class="tag">&lt;/<span class="name">build_depend</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">exec_depend</span>&gt;</span>message_runtime<span class="tag">&lt;/<span class="name">exec_depend</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>5.1.3 编辑CMakeLists.txt文件</strong></p>
+<p>打开功能包目录下的<code>CMakeLists.txt</code>文件</p>
+<p>找到<code>find_pakcage()</code>，在其中加入<code>message_generation</code>如下：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(catkin REQUIRED COMPONENTS</span><br><span class="line">  roscpp</span><br><span class="line">  std_msgs</span><br><span class="line">  message_generation</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>找到如下的两端，取消注释，并将刚才创建的<code>test_package.msg</code>消息名称加入其中</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Generate messages in the &#x27;msg&#x27; folder</span></span><br><span class="line">add_message_files(</span><br><span class="line">  FILES</span><br><span class="line">  test_msg.msg</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Generate added messages and services with any dependencies listed here</span></span><br><span class="line">generate_messages(</span><br><span class="line">  DEPENDENCIES</span><br><span class="line">  std_msgs</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.1.4 编译测试</strong></p>
+<p>进行完以上的步骤后，使用下面的命令进行编译：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/dev/catkin_ws/</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+
+<p>编译完成后，要检查刚才创建的<code>msg</code>文件是否成功编译，使用<code>rosmsg show</code>指令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rosmsg show test_package/test_msg</span><br></pre></td></tr></table></figure>
+
+<p>如果输出内容与<code>test_msg.msg</code>文件内的内容一致，说明编译正确</p>
+<p><strong>5.2 创建srv文件</strong></p>
+<p><strong>5.2.1 创建srv文件</strong></p>
+<p>在<code>test_package</code>功能包下创建<code>srv</code>文件夹，并在<code>srv</code>文件夹中创建一个新的文件<code>test_srv.srv</code>。在文件中输入以下内容：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int32 num1</span><br><span class="line">int32 num2</span><br><span class="line">int32 num3</span><br><span class="line">---</span><br><span class="line">int32 sum</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.2.2 编辑package.xml文件</strong></p>
+<p>在创建msg文件时已经完成了package&#x2F;xml文件的编辑，这里不需要额外的修改</p>
+<p><strong>5.2.3 编辑CMakeLists.txt</strong></p>
+<p>找到<code>catkin_package</code>，将其注释取消，并加入正确的数据如下：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">catkin_package(</span><br><span class="line"><span class="comment">#  INCLUDE_DIRS include</span></span><br><span class="line"><span class="comment">#  LIBRARIES test_package</span></span><br><span class="line"><span class="comment">#  CATKIN_DEPENDS roscpp std_msgs</span></span><br><span class="line"><span class="comment">#  DEPENDS system_lib</span></span><br><span class="line">  CATKIN_DEPENDS message_runtime</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>取消<code>add_service_files</code>的注释，并添加刚创建的服务文件的名字</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Generate services in the &#x27;srv&#x27; folder</span></span><br><span class="line">add_service_files(</span><br><span class="line">  FILES</span><br><span class="line">  test_srv.srv</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.2.4 编译测试</strong></p>
+<p>完成上面的文件创建和修改后，使用下面的命令进行编译：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/dev/catkin_ws</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+
+<p>编译完成后，要检测服务文件是否正确，可以使用<code>rossrv show</code>指令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rossrv show test_package/test_srv.srv</span><br></pre></td></tr></table></figure>
+
+<p>如果打印内容与<code>test_srv.srv</code>文件内的内容一致，说明编译正确</p>
+<p><strong>5.3 创建.cpp源文件</strong></p>
+<p><strong>5.3.1 创建源文件</strong></p>
+<p>在功能包文件夹中的src目录下<code>catkin_ws/test_package/src</code>，创建两个<code>.cpp</code>文件，分别为<code>server.cpp</code>和<code>client.cpp</code>，分别作为服务器和客户端</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;test_package/test_srv.h&quot;</span>	<span class="comment">//包含创建的srv文件</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//对三个变量求和，并将计算结果发送给其他节点</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">add</span><span class="params">(test_package::test_srv::Request &amp;req, test_package::test_srv::Response &amp;res)</span></span>&#123;</span><br><span class="line">        res.sum = req.num1 + req.num2 + req.num3;</span><br><span class="line">        <span class="built_in">ROS_INFO</span>(<span class="string">&quot;request: num1=%ld, num2=%ld, num3=%ld&quot;</span>, (<span class="type">int</span>)req.num1, (<span class="type">int</span>)req.num2, (<span class="type">int</span>)req.num3);</span><br><span class="line">        <span class="built_in">ROS_INFO</span>(<span class="string">&quot;sending back response: [%ld]&quot;</span>, (<span class="type">int</span>)res.sum);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;       </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>&#123;</span><br><span class="line">        ros::<span class="built_in">init</span>(argc, argv, <span class="string">&quot;add_3_ints_server&quot;</span>);</span><br><span class="line">        ros::NodeHandle n;</span><br><span class="line">        <span class="comment">//创建服务&quot;add_3_ints&quot;的服务端，并在ROS中广播</span></span><br><span class="line">        ros::ServiceServer service = n.<span class="built_in">advertiseService</span>(<span class="string">&quot;add_3_ints&quot;</span>, add);</span><br><span class="line">        <span class="built_in">ROS_INFO</span>(<span class="string">&quot;Ready to add 3 ints!&quot;</span>);</span><br><span class="line">        ros::<span class="built_in">spin</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;ros/ros.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;test_package/test_srv.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>&#123;</span><br><span class="line">        ros::<span class="built_in">init</span>(argc, argv, <span class="string">&quot;add_3_ints_client&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(argc != <span class="number">4</span>)&#123;</span><br><span class="line">                <span class="built_in">ROS_INFO</span>(<span class="string">&quot;usage: add_3_ints_client num1 num2 num3&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ros::NodeHandle n;</span><br><span class="line">        <span class="comment">//以&quot;add_3_ints&quot;为名称创建客户端</span></span><br><span class="line">        ros::ServiceClient client = n.<span class="built_in">serviceClient</span>&lt;test_package::test_srv&gt;(<span class="string">&quot;add_3_ints&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//创建srv文件的一个实例，并在其中加入需要发送的数据值</span></span><br><span class="line">        test_package::test_srv srv;</span><br><span class="line">        srv.request.num1 = <span class="built_in">atoll</span>(argv[<span class="number">1</span>]);</span><br><span class="line">        srv.request.num2 = <span class="built_in">atoll</span>(argv[<span class="number">2</span>]);</span><br><span class="line">        srv.request.num3 = <span class="built_in">atoll</span>(argv[<span class="number">3</span>]);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//调用服务并发送数据，如果调用成功，服务端会返回true，否则返回false</span></span><br><span class="line">        <span class="keyword">if</span>(client.<span class="built_in">call</span>(srv))&#123;</span><br><span class="line">                <span class="built_in">ROS_INFO</span>(<span class="string">&quot;Sum: %ld&quot;</span>, (<span class="type">long</span> <span class="type">int</span>)srv.response.sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">ROS_ERROR</span>(<span class="string">&quot;Failed to call service add_3_ints&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p><strong>5.3.2 编辑CMakeLists.txt</strong></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(server src/server.cpp)</span><br><span class="line"><span class="keyword">add_executable</span>(client src/client.cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">add_dependencies</span>(server test_package_generate_messages_cpp)</span><br><span class="line"><span class="keyword">add_dependencies</span>(client test_package_generate_messages_cpp)</span><br><span class="line"></span><br><span class="line"><span class="keyword">target_link_libraries</span>(server <span class="variable">$&#123;catkin_LIBRARIES&#125;</span>)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(client <span class="variable">$&#123;catkin_LIBRARIES&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.3.4 测试程序</strong></p>
+<p>回到<code>catkin_ws</code>工作空间中，进行编译：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/dev/catkin_ws</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>
+
+<p>编译完成后，先打开一个终端，运行<code>roscore</code>，然后再打开两个新终端窗口，分别运行如下代码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rosrun test_package server</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rosrun test_package client 6 4 2</span><br></pre></td></tr></table></figure>
+
+<p>可以看到服务端和客户端实现了消息的通信，完成了三个数字的求和计算</p>
+<img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292109621.png" alt="4ac4a74b048459c5d8dd8f5badc1cd4d" style="zoom: 50%;" />
+
+<h3 id="六、启动文件的配置"><a href="#六、启动文件的配置" class="headerlink" title="六、启动文件的配置"></a>六、启动文件的配置</h3><p>在前面，我们已经实现了节点的创建和使用，但是每个节点都需要打开不同的命令行窗口执行，如果节点数目更多，那么启动节点将会是一家你非常麻烦的事情</p>
+<p>通过启动文件我们可以在命令行窗口实现启动多个节点，只需要运行后缀名为<code>.launch</code>的文件即可启动多个节点</p>
+<p><strong>6.1 创建.launch文件</strong></p>
+<p>首先在功能包内创建一个名为<code>launch</code>的文件夹，绑在其中创建<code>test.launch</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">roscd test_package</span><br><span class="line">mkdir launch</span><br><span class="line">cd launch</span><br><span class="line">vim test.launch</span><br></pre></td></tr></table></figure>
+
+<p>在<code>test.launch</code>文件内输入如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">launch</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">&quot;talker&quot;</span> <span class="attr">pkg</span>=<span class="string">&quot;test_package&quot;</span> <span class="attr">type</span>=<span class="string">&quot;talker&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">&quot;listener&quot;</span> <span class="attr">pkg</span>=<span class="string">&quot;test_package&quot;</span> <span class="attr">type</span>=<span class="string">&quot;listener&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">launch</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>6.2 启动节点</strong></p>
+<p>上面编写的启动文件可以启动前文实验的<code>talker</code>和<code>listener</code>两个节点，启动命令如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">roslaunch test_package test.launch</span><br></pre></td></tr></table></figure>
+
+<p>系统会输出以下信息，说明启动成功</p>
+<img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292109341.png" alt="e6329866675a89d48b6bdaf24cd04a57" style="zoom:50%;" />
+
+<p>使用<code>rosnode list</code> 乐意列出活动的节点，可以看到我们已经成功启动了<code>talker</code>和<code>listener</code>两个节点</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292109732.png" alt="f488e7af1f328f23074eaa7570af2d6c"></p>
+<p>如果想看到两个节点传递的信息，可以使用<code>rqt_console</code></p>
+<img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292115856.png" alt="3437f10c23d7c40151781b777d8c57c3" style="zoom: 80%;" />
+
+<h3 id="七、动态参数的使用"><a href="#七、动态参数的使用" class="headerlink" title="七、动态参数的使用"></a>七、动态参数的使用</h3><p>一般情况下，我们编写一个节点时，只能以数据初始化节点内的变量，如果我们想改变这些变量值，可以使用主题，服务或参数服务器，但这种方式无法在线动态更新，如果<code>listener</code>不主动查询，我们无法知道参数是否更新。有时我们需要在线动态更新参数，这时就需要使用动态参数</p>
+<p><strong>7.1 创建配置文件</strong></p>
+<p>首先在功能包内新建一个名为<code>cfg</code>的文件夹，并在其内创建一个<code>test.cfg</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">roscd test_package</span><br><span class="line">mkdir cfg</span><br><span class="line">cd cfg</span><br><span class="line">vim test.cfg</span><br></pre></td></tr></table></figure>
+
+<p>在<code>test.cfg</code>内添加如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化ROS并导入参数生成器</span></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line">PACKAGE = <span class="string">&quot;test_package&quot;</span></span><br><span class="line"><span class="keyword">from</span> dynamic_reconfigure.parameter_generator_catkin <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化参数生成器，通过gen我们可以添加参数</span></span><br><span class="line">gen = ParameterGenerator()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入不同的参数类型并设置默认值、描述、取值范围等</span></span><br><span class="line"><span class="comment"># gen.add(name, type, level, description, default, min, max)</span></span><br><span class="line">gen.add(<span class="string">&quot;double_param&quot;</span>, double_t, <span class="number">0</span>, <span class="string">&quot;A double parameter&quot;</span>, <span class="number">.1</span>, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">gen.add(<span class="string">&quot;str_param&quot;</span>, str_t, <span class="number">0</span>, <span class="string">&quot;A string parameter&quot;</span>, <span class="string">&quot;test_default_string&quot;</span>)</span><br><span class="line">gen.add(<span class="string">&quot;int_param&quot;</span>, int_t, <span class="number">0</span>, <span class="string">&quot;An Integer parameter&quot;</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">100</span>)</span><br><span class="line">gen.add(<span class="string">&quot;bool_param&quot;</span>, bool_t, <span class="number">0</span>, <span class="string">&quot;A Boolean parameter&quot;</span>, <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">size_enum = gen.enum([gen.const(<span class="string">&quot;Low&quot;</span>, int_t, <span class="number">0</span>, <span class="string">&quot;Low is 0&quot;</span>), gen.const(<span class="string">&quot;Medium&quot;</span>, int_t, <span class="number">1</span>, <span class="string">&quot;Medium is 1&quot;</span>), gen.const(<span class="string">&quot;High&quot;</span>, int_t, <span class="number">2</span>, <span class="string">&quot;High is 2&quot;</span>), gen.const(<span class="string">&quot;Exlarge&quot;</span>, int_t, <span class="number">3</span>, <span class="string">&quot;Exlarge is 3&quot;</span>)], <span class="string">&quot;Select from the list&quot;</span>)</span><br><span class="line"></span><br><span class="line">gen.add(<span class="string">&quot;size&quot;</span>, int_t, <span class="number">0</span>, <span class="string">&quot;Select from the list&quot;</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>, edit_method=size_enum)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成必要的文件并退出程序</span></span><br><span class="line">exit(gen.generate(PACKAGE, <span class="string">&quot;test_package&quot;</span>, <span class="string">&quot;test_&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<p>由于<code>test.cfg</code>是由ROS执行的可执行文件，因此我们需要改变文件权限：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod a+x test.cfg</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.2 修改CMakeLists.txt添加配置文件的编译</strong></p>
+<p>打开<code>CMakeLists.txt</code>，找到<code>find_package</code>，在最后加入<code>dynamic_reconfigure</code>如下：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find_package</span>(catkin REQUIRED COMPONENTS</span><br><span class="line">  roscpp</span><br><span class="line">  std_msgs</span><br><span class="line">  message_generation</span><br><span class="line">  dynamic_reconfigure</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>找到<code>generate_dynamic_reconfigure_options</code>，取消注释，并将内部的配置文件改为刚创建的配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## Generate dynamic reconfigure parameters in the &#x27;cfg&#x27; folder</span><br><span class="line">generate_dynamic_reconfigure_options(</span><br><span class="line">  cfg/test.cfg</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.3 创建节点</strong></p>
+<p>接下来需要创建一个具有动态配置支持的新节点</p>
+<p>在<code>src</code>文件夹下创建一个新文件如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">roscd test_package</span><br><span class="line">vim src/dynamic_param.cpp</span><br></pre></td></tr></table></figure>
+
+<p>在文件中写入如下代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ros/ros.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;dynamic_reconfigure/server.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;test_package/test_Config.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//回调函数将输出参数的新值，参数名称必须与test.cfg配置文件相同</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">callback</span><span class="params">(test_package::test_Config &amp;config, <span class="type">uint32_t</span> level)</span></span>&#123;</span><br><span class="line">        <span class="built_in">ROS_INFO</span>(<span class="string">&quot;Reconfigure Request: %d %f %s %s %d&quot;</span>, config.int_param, config.double_param, config.str_param.<span class="built_in">c_str</span>(), config.bool_param?<span class="string">&quot;True&quot;</span>:<span class="string">&quot;False&quot;</span>, config.size);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> **argv)</span></span>&#123;</span><br><span class="line">        ros::<span class="built_in">init</span>(argc, argv, <span class="string">&quot;test_dynamic_reconfigure&quot;</span>);</span><br><span class="line">        <span class="comment">//初始化服务器</span></span><br><span class="line">        dynamic_reconfigure::Server&lt;test_package::test_Config&gt; server;</span><br><span class="line">		<span class="comment">//向服务器发送回调函数，当服务器得到重新配置请求，会调用回调函数        </span></span><br><span class="line">        dynamic_reconfigure::Server&lt;test_package::test_Config&gt;::CallbackType f;</span><br><span class="line">        f = boost::<span class="built_in">bind</span>(&amp;callback, _1, _2);</span><br><span class="line">        server.<span class="built_in">setCallback</span>(f);</span><br><span class="line"></span><br><span class="line">        ros::<span class="built_in">spin</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.4 修改CMakeLists.txt添加节点的编译</strong></p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>(dynamic_param src/dynamic_param.cpp)</span><br><span class="line"><span class="keyword">add_dependencies</span>(dynamic_param test_package_gencfg)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(dynamic_param <span class="variable">$&#123;catkin_LIBRARIES&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.5 运行配置</strong></p>
+<p>打开三个终端命令行窗口，分别运行如下的命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">roscore</span><br><span class="line">rosrun test_package dynamic_param</span><br><span class="line">rosrun rqt_reconfigure rqt_reconfigure</span><br></pre></td></tr></table></figure>
+
+<p>执行完成后，会看到一个<code>rqt_reconfigure</code>窗口，在这个窗口中就可以动态的配置节点的参数，并且在调整参数时，可以看到命令行打印参数的改变</p>
+<img src="https://cdn.jsdelivr.net/gh/Yunfei-Bi/photohouse/blog1/202503292115213.png" alt="1a9ffd68c55cdc8d77aea9945e2274d0" style="zoom:50%;" />
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://Yunfei-Bi.github.io">Yunfei-Bi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yunfei-bi.github.io/2025/03/29/ros%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">https://yunfei-bi.github.io/2025/03/29/ros常用指令/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://Yunfei-Bi.github.io" target="_blank">Yunfei-Bi's BLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/images/avatar.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechat.png" target="_blank"><img class="post-qr-code-img" src="/images/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.png" target="_blank"><img class="post-qr-code-img" src="/images/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/03/26/shell%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Shell常用命令~万字长文"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Shell常用命令~万字长文</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E5%B7%A5%E4%BD%9C%E7%A9%BA%E9%97%B4"><span class="toc-text">一、创建工作空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%9B%E5%BB%BA%E4%B8%8E%E7%BC%96%E8%AF%91ROS%E5%8A%9F%E8%83%BD%E5%8C%85"><span class="toc-text">二、创建与编译ROS功能包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81ROS%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-text">三、ROS的基本命令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-%E6%9C%8D%E5%8A%A1"><span class="toc-text">3.3 服务</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E8%8A%82%E7%82%B9%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%BF%90%E8%A1%8C"><span class="toc-text">四、节点的创建与运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-text">五、服务的创建与使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%90%AF%E5%8A%A8%E6%96%87%E4%BB%B6%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-text">六、启动文件的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%8A%A8%E6%80%81%E5%8F%82%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">七、动态参数的使用</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By Yunfei-Bi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://yunfei-bi.github.io">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
